@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Gmail Summarizer",
+    "version": "1.0",
+    "description": "Summarize selected text in Gmail using AI",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+      "http://localhost:5000/*",
+      "https://mail.google.com/*"
+    ],
+    "action": {
+      "default_popup": "popup-ui-react/build/index.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
